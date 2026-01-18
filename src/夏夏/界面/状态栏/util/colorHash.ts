@@ -12,8 +12,8 @@ export function stringToColorHash(str: string): string {
   // 将哈希值映射到红黄紫范围
   // 色相范围：0-60(红-黄), 270-330(紫-粉)
   const hueRanges = [
-    { min: 0, max: 60 },      // 红到黄
-    { min: 270, max: 330 }    // 紫到粉
+    { min: 0, max: 60 }, // 红到黄
+    { min: 270, max: 330 }, // 紫到粉
   ];
 
   const rangeIndex = Math.abs(hash) % hueRanges.length;

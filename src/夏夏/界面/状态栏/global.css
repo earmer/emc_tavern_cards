@@ -1,24 +1,24 @@
-@import url("https://fontsapi.zeoseven.com/285/main/result.css"); /* Noto Serif CJK */
-@import url("https://fontsapi.zeoseven.com/159/main/result.css"); /* Sarasa Mono SC */
+@import url('https://fontsapi.zeoseven.com/285/main/result.css'); /* Noto Serif CJK */
+@import url('https://fontsapi.zeoseven.com/159/main/result.css'); /* Sarasa Mono SC */
 
 :root {
   /* 深夜赛场模式配色 */
-  --bg-primary: #1A1816;        /* Ink Black */
-  --bg-secondary: #4A1A1A;      /* Dark Burgundy */
-  --bg-tertiary: #383B10;       /* Dark Olive */
-  --bg-structural: #14381C;     /* Varsity Dark Green */
+  --bg-primary: #1a1816; /* Ink Black */
+  --bg-secondary: #4a1a1a; /* Dark Burgundy */
+  --bg-tertiary: #383b10; /* Dark Olive */
+  --bg-structural: #14381c; /* Varsity Dark Green */
 
-  --text-primary: #F9F7F2;      /* Cream White */
-  --text-heading: #FFD6A5;      /* Pastel Peach */
-  --text-accent: #FFADAD;       /* Pastel Pink */
+  --text-primary: #f9f7f2; /* Cream White */
+  --text-heading: #ffd6a5; /* Pastel Peach */
+  --text-accent: #ffadad; /* Pastel Pink */
 
-  --border-color: #F9F7F2;
+  --border-color: #f9f7f2;
   --border-width: 1.5px;
 
-  --progress-hp: #CAFFBF;
-  --progress-hunger: #FFD6A5;
-  --progress-mood: #FFADAD;
-  --progress-desire: #FDFFB6;
+  --progress-hp: #caffbf;
+  --progress-hunger: #ffd6a5;
+  --progress-mood: #ffadad;
+  --progress-desire: #fdffb6;
 
   --font-heading: 'Noto Serif SC', serif;
   --font-body: 'Sarasa Mono SC', sans-serif;
@@ -44,8 +44,20 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
   pointer-events: none;
   opacity: 0.5;
   z-index: 1;

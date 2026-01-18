@@ -4,10 +4,7 @@ import { Schema } from '../../schema';
 import type { z } from 'zod';
 
 // 主数据存储
-export const useDataStore = defineMvuDataStore(
-  Schema,
-  { type: 'message', message_id: getCurrentMessageId() }
-);
+export const useDataStore = defineMvuDataStore(Schema, { type: 'message', message_id: getCurrentMessageId() });
 
 // 获取上一楼层数据用于对比
 export function usePreviousLayerData() {
@@ -19,7 +16,7 @@ export function usePreviousLayerData() {
       await waitGlobalInitialized('Mvu');
       const prevVariables = Mvu.getMvuData({
         type: 'message',
-        message_id: currentMessageId - 1
+        message_id: currentMessageId - 1,
       });
       previousData.value = Schema.parse(_.get(prevVariables, 'stat_data'));
     } catch (error) {
@@ -41,6 +38,6 @@ export function getStatDiff(current: number, previous: number | null) {
     diff,
     color: diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-500',
     arrow: diff > 0 ? '↑' : diff < 0 ? '↓' : '→',
-    display: diff !== 0 ? `${diff > 0 ? '+' : ''}${diff}` : '±0'
+    display: diff !== 0 ? `${diff > 0 ? '+' : ''}${diff}` : '±0',
   };
 }

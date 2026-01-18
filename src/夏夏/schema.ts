@@ -21,13 +21,15 @@ export const Schema = z.object({
       '👗': z.string(),
       Debuff: z.record(z.string().describe('状态名'), z.string().describe('状态描述')).prefault({}),
     }),
-    物品栏: z.record(
-      z.string().describe('物品名'),
-      z.object({
-        描述: z.string(),
-        数量: z.coerce.number(),
-      }),
-    ).prefault({}),
+    物品栏: z
+      .record(
+        z.string().describe('物品名'),
+        z.object({
+          描述: z.string(),
+          数量: z.coerce.number(),
+        }),
+      )
+      .prefault({}),
     小记系统: z.object({
       小记: z.string(),
       历史小记: z.record(z.string(), z.string()).prefault({}),

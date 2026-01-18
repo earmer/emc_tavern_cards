@@ -49,11 +49,7 @@ const store = useDataStore();
 .title-underline {
   height: 1.5px;
   margin-top: var(--spacing-xs);
-  background: linear-gradient(90deg,
-    var(--text-accent) 0%,
-    var(--text-heading) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, var(--text-accent) 0%, var(--text-heading) 50%, transparent 100%);
   opacity: 0.8;
 }
 
