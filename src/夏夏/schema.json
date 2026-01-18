@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "环境": {
+      "type": "object",
+      "properties": {
+        "日期": {
+          "type": "string"
+        },
+        "时间": {
+          "type": "string"
+        },
+        "📍": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "日期",
+        "时间",
+        "📍"
+      ]
+    },
+    "夏夏": {
+      "type": "object",
+      "properties": {
+        "基础属性": {
+          "type": "object",
+          "properties": {
+            "姓名": {
+              "type": "string"
+            },
+            "体力": {
+              "type": "number"
+            },
+            "饥饿感": {
+              "type": "number"
+            },
+            "特殊阶段": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "姓名",
+            "体力",
+            "饥饿感",
+            "特殊阶段"
+          ]
+        },
+        "情绪": {
+          "type": "object",
+          "properties": {
+            "心情": {
+              "type": "number"
+            },
+            "欲望": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "心情",
+            "欲望"
+          ]
+        },
+        "动态状态": {
+          "type": "object",
+          "properties": {
+            "正在": {
+              "type": "string"
+            },
+            "次数": {
+              "type": "number"
+            },
+            "👗": {
+              "type": "string"
+            },
+            "Debuff": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "description": "状态名"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "description": "状态描述"
+              }
+            }
+          },
+          "required": [
+            "正在",
+            "次数",
+            "👗"
+          ]
+        },
+        "物品栏": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "物品名"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "描述": {
+                "type": "string"
+              },
+              "数量": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "描述",
+              "数量"
+            ]
+          }
+        },
+        "小记系统": {
+          "type": "object",
+          "properties": {
+            "小记": {
+              "type": "string"
+            },
+            "历史小记": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "小记"
+          ]
+        }
+      },
+      "required": [
+        "基础属性",
+        "情绪",
+        "动态状态",
+        "小记系统"
+      ]
+    }
+  },
+  "required": [
+    "环境",
+    "夏夏"
+  ]
+}
