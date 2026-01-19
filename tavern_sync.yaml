@@ -1,7 +1,11 @@
 # yaml-language-server: $schema=https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/schema/settings.zh.json
 
 # 在此填入 user 名称, 提示词中如果有这个名字则会被替换成 <user> 宏
+<<<<<<< HEAD
 user名称: Earmer
+=======
+user名称: 青空黎
+>>>>>>> 4fdc70983fb9429b6d8988deb8df3a9f5fda2434
 
 # 在此填入新的"世界书"或"预设"配置
 配置:
@@ -25,9 +29,12 @@ user名称: Earmer
     # 当使用打包功能 `node tavern_sync.mjs bundle 配置名称` 直接生成世界书/预设文件时, 要将它存放在哪个文件中
     # 你也可以直接删去下面一行不填, 则默认会导出到本地文件路径的同目录下
     导出文件路径: 示例/角色卡示例/角色卡示例
+<<<<<<< HEAD
   夏夏:
     类型: 世界书
     # 【关键】这里填写您在酒馆（SillyTavern）里该世界书的准确名称
     酒馆中的名称: 夏星眠
     # 同步到本地的路径，指向 /src/夏夏/世界书/index (脚本会自动处理 index.yaml)
     本地文件路径: src/夏夏/世界书/index
+=======
+>>>>>>> 4fdc70983fb9429b6d8988deb8df3a9f5fda2434
