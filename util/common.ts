@@ -82,11 +82,7 @@ export function literalYamlify(value: any) {
   return YAML.stringify(value, { blockQuote: 'literal' });
 }
 
-<<<<<<< HEAD
-export function parseString(content: string) {
-=======
 export function parseString(content: string): any {
->>>>>>> 4fdc70983fb9429b6d8988deb8df3a9f5fda2434
   let parsed: unknown;
   try {
     parsed = YAML.parseDocument(content, { merge: true }).toJS();
@@ -112,8 +108,5 @@ export function parseString(content: string): any {
       }
     }
   }
-<<<<<<< HEAD
-=======
   return parsed;
->>>>>>> 4fdc70983fb9429b6d8988deb8df3a9f5fda2434
 }
