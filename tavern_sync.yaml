@@ -30,4 +30,4 @@ user名称: Earmer
     # 【关键】这里填写您在酒馆（SillyTavern）里该世界书的准确名称
     酒馆中的名称: 夏星眠
     # 同步到本地的路径，指向 /src/夏夏/世界书/index (脚本会自动处理 index.yaml)
-    本地文件路径: src/夏夏/世界书/index=
+    本地文件路径: src/夏夏/世界书/index
