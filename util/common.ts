@@ -9,6 +9,11 @@ export function assignInplace<T>(destination: T[], new_array: T[]): T[] {
   return destination;
 }
 
+// 修正 _.merge 对数组的合并逻辑, [1, 2, 3] 和 [4, 5] 合并后变成 [4, 5] 而不是 [4, 5, 3]
+export function correctlyMerge<TObject, TSource>(lhs: TObject, rhs: TSource): TObject & TSource {
+  return _.mergeWith(lhs, rhs, (_lhs, rhs) => (_.isArray(rhs) ? rhs : undefined));
+}
+
 export function chunkBy<T>(array: T[], predicate: (lhs: T, rhs: T) => boolean): T[][] {
   if (array.length === 0) {
     return [];
@@ -25,24 +30,30 @@ export function chunkBy<T>(array: T[], predicate: (lhs: T, rhs: T) => boolean): 
   return chunks;
 }
 
-export function regexFromString(input: string): RegExp | null {
+export function regexFromString(input: string, replace_macros?: boolean): RegExp | null {
   if (!input) {
     return null;
   }
+  const makeRegex = (pattern: string, flags: string) => {
+    if (replace_macros) {
+      pattern = substitudeMacros(pattern);
+    }
+    return new RegExp(pattern, flags);
+  };
   try {
     const match = input.match(/\/(.+)\/([a-z]*)/i);
     if (!match) {
-      return new RegExp(_.escapeRegExp(input), 'i');
+      return makeRegex(_.escapeRegExp(input), 'i');
     }
     if (match[2] && !/^(?!.*?(.).*?\1)[gmixXsuUAJ]+$/.test(match[3])) {
-      return new RegExp(input, 'i');
+      return makeRegex(input, 'i');
     }
     let flags = match[2] ?? '';
     _.pull(flags, 'g');
     if (flags.indexOf('i') === -1) {
       flags = flags + 'i';
     }
-    return new RegExp(match[1], flags);
+    return makeRegex(match[1], flags);
   } catch {
     return null;
   }
