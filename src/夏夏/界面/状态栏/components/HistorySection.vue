@@ -10,15 +10,13 @@
       <p class="note-content">{{ store.data.夏夏.小记系统.小记 }}</p>
     </div>
 
-    <div v-if="Object.keys(store.data.夏夏.小记系统.历史小记).length > 0" class="history-notes">
+    <div v-if="sortedHistoryNotes.length > 0" class="history-notes">
       <button @click="showHistory = !showHistory" class="toggle-btn">
-        <span
-          >{{ showHistory ? '▼' : '▶' }} 历史小记 ({{ Object.keys(store.data.夏夏.小记系统.历史小记).length }})</span
-        >
+        <span>{{ showHistory ? '▼' : '▶' }} 历史小记 ({{ sortedHistoryNotes.length }})</span>
       </button>
 
       <div v-if="showHistory" class="history-list">
-        <div v-for="(content, timestamp) in store.data.夏夏.小记系统.历史小记" :key="timestamp" class="history-item">
+        <div v-for="[timestamp, content] in sortedHistoryNotes" :key="timestamp" class="history-item">
           <span class="timestamp">{{ timestamp }}</span>
           <p class="note-content">{{ content }}</p>
         </div>
@@ -28,11 +26,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useDataStore } from '../store';
 
 const store = useDataStore();
 const showHistory = ref(false);
+
+// 按时间戳降序排列历史小记（最新的在最上面）
+const sortedHistoryNotes = computed(() => {
+  const notes = store.data.夏夏.小记系统.历史小记;
+  return Object.entries(notes).sort((a, b) => {
+    // 比较时间戳字符串，降序排列
+    return b[0].localeCompare(a[0]);
+  });
+});
 </script>
 
 <style scoped>
@@ -113,6 +120,37 @@ const showHistory = ref(false);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  /* 限制高度为大约4条小记，每条约80px（padding + content + gap） */
+  max-height: 260px;
+  overflow-y: auto;
+  /* 添加内边距，为滚动条留出空间 */
+  padding-right: var(--spacing-xs);
+}
+
+/* 自定义滚动条样式 */
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--text-accent);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-heading);
+}
+
+/* Firefox 滚动条样式 */
+.history-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-accent) var(--bg-tertiary);
 }
 
 .history-item {

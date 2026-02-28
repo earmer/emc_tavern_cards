@@ -3,6 +3,7 @@
   "type": "object",
   "properties": {
     "环境": {
+      "default": {},
       "type": "object",
       "properties": {
         "日期": {
@@ -14,23 +15,21 @@
         "📍": {
           "type": "string"
         }
-      },
-      "required": [
-        "日期",
-        "时间",
-        "📍"
-      ]
+      }
     },
     "夏夏": {
+      "default": {},
       "type": "object",
       "properties": {
         "基础属性": {
+          "default": {},
           "type": "object",
           "properties": {
             "姓名": {
               "type": "string"
             },
             "体力": {
+              "default": 100,
               "type": "number"
             },
             "饥饿感": {
@@ -39,30 +38,23 @@
             "特殊阶段": {
               "type": "string"
             }
-          },
-          "required": [
-            "姓名",
-            "体力",
-            "饥饿感",
-            "特殊阶段"
-          ]
+          }
         },
         "情绪": {
+          "default": {},
           "type": "object",
           "properties": {
             "心情": {
+              "default": 50,
               "type": "number"
             },
             "欲望": {
               "type": "number"
             }
-          },
-          "required": [
-            "心情",
-            "欲望"
-          ]
+          }
         },
         "动态状态": {
+          "default": {},
           "type": "object",
           "properties": {
             "正在": {
@@ -86,12 +78,7 @@
                 "description": "状态描述"
               }
             }
-          },
-          "required": [
-            "正在",
-            "次数",
-            "👗"
-          ]
+          }
         },
         "物品栏": {
           "default": {},
@@ -117,6 +104,7 @@
           }
         },
         "小记系统": {
+          "default": {},
           "type": "object",
           "properties": {
             "小记": {
@@ -132,22 +120,9 @@
                 "type": "string"
               }
             }
-          },
-          "required": [
-            "小记"
-          ]
+          }
         }
-      },
-      "required": [
-        "基础属性",
-        "情绪",
-        "动态状态",
-        "小记系统"
-      ]
+      }
     }
-  },
-  "required": [
-    "环境",
-    "夏夏"
-  ]
+  }
 }
