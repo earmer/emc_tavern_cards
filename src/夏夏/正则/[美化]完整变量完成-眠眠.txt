@@ -1,0 +1,53 @@
+<div style="width: 80%; margin: 20px auto;">
+  <details class="mianmian-complete" style="
+    background: #242426;
+    border: 1px solid rgba(168, 198, 159, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  ">
+    <summary style="
+      padding: 12px 18px;
+      color: #d1d1d1;
+      cursor: pointer;
+      list-style: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+    ">
+      <span style="font-size: 1.2em; filter: drop-shadow(0 0 5px rgba(168, 198, 159, 0.5));">🍃</span>
+      <span style="flex: 1;">眠眠已写成</span>
+      <small style="color: #a8c69f; font-size: 0.85em; opacity: 0.8;">
+        <span class="toggle-indicator" data-close="展开 ▶" data-open="收起 ▼"></span>
+      </small>
+    </summary>
+    <div style="
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 12px 18px;
+      color: #888888;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      background: rgba(0, 0, 0, 0.1);
+      border-top: 1px solid #333335;
+    ">
+    $1
+    </div>
+  </details>
+</div>
+
+<style>
+  .mianmian-complete::-webkit-scrollbar { width: 4px; }
+  .mianmian-complete::-webkit-scrollbar-track { background: #1a1a1c; }
+  .mianmian-complete::-webkit-scrollbar-thumb { background: #333335; border-radius: 2px; }
+  
+  .mianmian-complete[open] { border-color: #a8c69f !important; }
+  .mianmian-complete summary::marker { display: none; }
+  .mianmian-complete[open] .toggle-indicator::after { content: attr(data-open); }
+  .mianmian-complete:not([open]) .toggle-indicator::after { content: attr(data-close); }
+</style>

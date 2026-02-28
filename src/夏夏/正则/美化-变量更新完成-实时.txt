@@ -1,0 +1,7 @@
+```
+<body>
+  <script>
+    $('body').load('http://127.0.0.1:5500/dist/夏夏/界面/变量更新/updated/index.html')
+  </script>
+</body>
+```

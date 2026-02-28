@@ -1,0 +1,344 @@
+```html
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root {
+      /* 降低饱和度的柔和配色 */
+      --背景底色: #1a1a1c;
+      --卡片背景: #242426;
+      --主文字色: #d1d1d1;
+      --暗文字色: #888888;
+      --边框颜色: #333335;
+      
+      /* 柔和运动色 */
+      --柔粉: #d486a9;  
+      --柔绿: #a8c69f;
+    }
+
+    body {
+      margin: 0;
+      padding: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--背景底色);
+      color: var(--主文字色);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .容器 {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .板块 {
+      background: var(--卡片背景);
+      border: 1px solid var(--边框颜色);
+      border-radius: 6px;
+      padding: 14px 18px;
+      position: relative;
+    }
+    
+    /* 装饰条改为半透明 */
+    .板块::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--柔粉), var(--柔绿));
+      opacity: 0.6;
+    }
+
+    .环境网格 {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .信息项 {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .标签 {
+      color: var(--柔粉);
+      font-size: 12px;
+      opacity: 0.85;
+    }
+    
+    .数值文字 {
+      color: var(--柔绿);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .角色头部 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--边框颜色);
+    }
+
+    .角色名 {
+      font-weight: 600;
+      font-size: 16px;
+      color: #e0e0e0;
+    }
+
+    .数值组 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+      row-gap: 14px;
+    }
+
+    .条容器 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .条头部 {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: var(--暗文字色);
+    }
+
+    .进度底色 {
+      background: #121212;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .进度填充 {
+      background: var(--柔绿); /* 默认用柔绿 */
+      height: 100%;
+      width: 0%;
+      transition: width 0.6s ease-out;
+    }
+    
+    /* 心情与欲望使用粉色填充 */
+    .进度填充.粉色系 {
+      background: var(--柔粉);
+    }
+
+    .状态行 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .状态标签 {
+      display: inline-block;
+      background: rgba(212, 134, 169, 0.1);
+      color: var(--柔粉);
+      border: 1px solid rgba(212, 134, 169, 0.2);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .小记区域 {
+      background: rgba(0, 0, 0, 0.15);
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 14px;
+      border-left: 2px solid #444;
+    }
+
+    .折叠组 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    details {
+      border: 1px solid var(--边框颜色);
+      border-radius: 4px;
+    }
+
+    summary {
+      color: var(--暗文字色);
+      padding: 8px;
+      list-style: none;
+      font-size: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    
+    summary:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .折叠内容 {
+      padding: 10px;
+      border-top: 1px solid var(--边框颜色);
+      font-size: 13px;
+    }
+
+    .物品条目 {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+  </style>
+
+  <script type="module">
+    function populateCharacterData() {
+      const all_variables = getAllVariables();
+
+      // --- 环境数据 ---
+      $('#env-date').text(_.get(all_variables, 'stat_data.环境.日期', '－'));
+      $('#env-time').text(_.get(all_variables, 'stat_data.环境.时间', '－'));
+      $('#env-loc').text(_.get(all_variables, 'stat_data.环境.📍', '－'));
+
+      // --- 角色属性 ---
+      const name = _.get(all_variables, 'stat_data.夏夏.基础属性.姓名', '夏星眠');
+      const stage = _.get(all_variables, 'stat_data.夏夏.基础属性.特殊阶段', '健康');
+      $('#char-name').text(name);
+      $('#char-stage').text(stage);
+
+      const stats = {
+        'hp': _.get(all_variables, 'stat_data.夏夏.基础属性.体力', 0),
+        'hunger': _.get(all_variables, 'stat_data.夏夏.基础属性.饥饿感', 0),
+        'mood': _.get(all_variables, 'stat_data.夏夏.情绪.心情', 0),
+        'desire': _.get(all_variables, 'stat_data.夏夏.情绪.欲望', 0)
+      };
+
+      Object.entries(stats).forEach(([id, val]) => {
+        $(`#bar-${id}`).css('width', `${val}%`);
+        $(`#val-${id}`).text(`${val}%`);
+      });
+
+      // --- 动态 ---
+      $('#act-doing').text(_.get(all_variables, 'stat_data.夏夏.动态状态.正在', '－'));
+      $('#act-count').text(_.get(all_variables, 'stat_data.夏夏.动态状态.次数', '0'));
+      $('#act-outfit').text(_.get(all_variables, 'stat_data.夏夏.动态状态.👗', '－'));
+
+      const debuffs = _.get(all_variables, 'stat_data.夏夏.动态状态.Debuff', {});
+      const debuffHtml = Object.entries(debuffs).map(([k, v]) =>
+        `<span class="状态标签" title="${v}">${k}</span>`
+      ).join('') || '<span style="color:var(--暗文字色); font-size:12px;">常规状态</span>';
+      $('#act-debuff').html(debuffHtml);
+
+      // --- 列表填充 ---
+      const items = _.get(all_variables, 'stat_data.夏夏.物品栏', {});
+      $('#list-items').html(Object.entries(items).map(([n, d]) => `
+        <div class="物品条目">
+          <span>${n} <small style="color:var(--暗文字色)">(${d.描述 || ''})</small></span>
+          <span style="color:var(--柔绿)">×${d.数量 || 1}</span>
+        </div>
+      `).join('') || '空');
+
+      const history = _.get(all_variables, 'stat_data.夏夏.小记系统.历史小记', {});
+      $('#list-history').html(Object.entries(history).reverse().map(([t, c]) => `
+        <div style="margin-bottom:8px; border-bottom:1px solid #333; padding-bottom:4px;">
+          <div style="font-size:10px; color:var(--柔绿); opacity:0.7;">${t}</div>
+          <div style="color:#bbb;">${c}</div>
+        </div>
+      `).join('') || '无记录');
+
+      $('#note-current').text(_.get(all_variables, 'stat_data.夏夏.小记系统.小记', '－'));
+    }
+
+    async function init() {
+      await waitGlobalInitialized('Mvu');
+      populateCharacterData();
+      eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, populateCharacterData);
+    }
+    $(errorCatched(init));
+  </script>
+</head>
+<body>
+  <div class="容器">
+    <div class="板块 环境网格">
+      <div class="信息项"><span class="标签">日期</span><span id="env-date" class="数值文字">－</span></div>
+      <div class="信息项"><span class="标签">时刻</span><span id="env-time" class="数值文字">－</span></div>
+      <div class="信息项"><span class="标签">位置</span><span id="env-loc" class="数值文字">－</span></div>
+    </div>
+
+    <div class="板块">
+      <div class="角色头部">
+        <span id="char-name" class="角色名">－</span>
+        <span id="char-stage" class="状态标签" style="background:rgba(168, 198, 159, 0.15); color:var(--柔绿); border-color:rgba(168, 198, 159, 0.3);">－</span>
+      </div>
+      
+      <div class="数值组">
+        <div class="条容器">
+          <div class="条头部"><span>体力</span><span id="val-hp">0%</span></div>
+          <div class="进度底色"><div id="bar-hp" class="进度填充"></div></div>
+        </div>
+        <div class="条容器">
+          <div class="条头部"><span>饥饿</span><span id="val-hunger">0%</span></div>
+          <div class="进度底色"><div id="bar-hunger" class="进度填充"></div></div>
+        </div>
+        <div class="条容器">
+          <div class="条头部"><span>心情</span><span id="val-mood">0%</span></div>
+          <div class="进度底色"><div id="bar-mood" class="进度填充 粉色系"></div></div>
+        </div>
+        <div class="条容器">
+          <div class="条头部"><span>欲望</span><span id="val-desire">0%</span></div>
+          <div class="进度底色"><div id="bar-desire" class="进度填充 粉色系"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="板块">
+      <div class="状态行">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="标签">当前动作</span>
+          <span id="act-doing" style="color:#eee;">－</span>
+        </div>
+        <div style="font-size:11px; color:var(--暗文字色);">
+          今日次数: <span id="act-count" style="color:var(--柔绿);">0</span>
+        </div>
+      </div>
+      
+      <div class="状态行">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="标签">衣着状态</span>
+          <span id="act-outfit" style="color:#aaa;">－</span>
+        </div>
+        <div id="act-debuff">－</div>
+      </div>
+
+      <div class="小记区域">
+        <div style="font-size:11px; color:var(--柔粉); margin-bottom:4px; opacity:0.8;">观测小记</div>
+        <div id="note-current" style="font-size:13px; color:#bbb;">－</div>
+      </div>
+
+      <div class="折叠组">
+          <details>
+            <summary>持有物品</summary>
+            <div id="list-items" class="折叠内容"></div>
+          </details>
+    
+          <details>
+            <summary>历史记录</summary>
+            <div id="list-history" class="折叠内容"></div>
+          </details>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+```

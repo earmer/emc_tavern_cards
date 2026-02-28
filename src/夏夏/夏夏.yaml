@@ -1,0 +1,491 @@
+# yaml-language-server: $schema=https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/schema/character.zh.json
+头像: 头像
+版本: ""
+作者: ""
+备注: ""
+
+第一条消息:
+  - 文件: 第一条消息/0
+
+角色描述: "姓名: 夏星眠\r
+
+  性别: 女\r
+
+  年龄: 17\r
+
+  身份: 高二学生 / 校篮球队前锋\r
+
+  外貌: 小麦色皮肤，高马尾，常穿球衣\r
+
+  性格: 直球、野性、黏人、变化多端"
+
+锚点: {}
+
+世界书名称: 与角色卡名称相同
+条目:
+  - 名称: 睡衣
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 居家
+        - 服装
+        - 衣服
+        - 睡衣
+        - 睡裤
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    特殊效果:
+      黏性: 5
+    文件: 世界书/睡衣
+
+  - 名称: 世界观设定
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 1
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/世界观设定
+
+  - 名称: 角色速览
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 2
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/角色速览
+
+  - 名称: 夏星眠_基础档案
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 10
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_基础档案
+
+  - 名称: 夏星眠_演绎指导
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 11
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_演绎指导
+
+  - 名称: 夏星眠_性格与缺点
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 12
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_性格与缺点
+
+  - 名称: 夏星眠_兴趣与衣柜
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 13
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_兴趣与衣柜
+
+  - 名称: 夏星眠_语料库
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 14
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_语料库
+
+  - 名称: 夏星眠_NSFW档案
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 15
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_NSFW档案
+
+  - 名称: 夏星眠_物品
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 16
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/夏星眠_物品
+
+  - 名称: NPC_家长组
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 陆明哲
+        - 苏雅
+        - 夏建国
+        - 林婉
+        - 爸爸
+        - 妈妈
+        - 叔叔
+        - 阿姨
+        - 妈
+        - 爸
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/NPC_家长组
+
+  - 名称: NPC_周边组
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 王超
+        - 胖子
+        - 李雪
+        - 班长
+        - 朋友
+        - 学校
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/NPC_周边组
+
+  - 名称: "[initvar]"
+    启用: false
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 3
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/[initvar]
+
+  - 名称: "[mvu_update]变量更新规则"
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 200
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书/[mvu_update]变量更新规则
+
+  - 名称: "[mvu_update]变量输出格式"
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 200
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书/[mvu_update]变量输出格式
+
+  - 名称: "[mvu_update]变量输出格式强调"
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 200
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书/[mvu_update]变量输出格式强调
+
+  - 名称: 变量列表
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 200
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书/变量列表
+
+  - 名称: 性爱方针
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 15
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    文件: 世界书/性爱方针
+
+扩展字段:
+  正则:
+    - 正则名称: 01-去杂七杂八标签
+      id: 5bd7048a-13d7-48b5-b510-0a2dc7d570fc
+      启用: true
+      查找表达式: /(<content>|<\/content>)|(.*?<\/think(ing)?>(\n)?)|(<think(ing)?>[\s\S]*?<\/think(ing)?>(\n)?)|(<safe>[\s\S]*?<\/safe>)|(<recap>|<\/recap>|<theater>|<\/theater>)/gs
+      内容: ""
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: true
+
+    - 正则名称: 只发送最新3楼的变量更新
+      id: 90c8a606-08cf-4c68-b0f3-410ac78560e9
+      启用: true
+      查找表达式: /<UpdateVariable>[\s\S]*?</UpdateVariable>/gm
+      内容: ""
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: false
+        仅格式提示词: true
+      最小深度: 6
+
+    - 正则名称: 对 AI 隐藏状态栏
+      id: b2abac83-edc2-4b70-865e-3b82e4a9b58b
+      启用: true
+      查找表达式: <StatusPlaceHolderImpl/>
+      内容: ""
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: false
+        仅格式提示词: true
+
+    - 正则名称: 状态栏美化
+      id: 43ec6c91-708e-4ced-8fdf-4d1b5dbbcd8f
+      启用: false
+      查找表达式: <StatusPlaceHolderImpl/>
+      文件: 正则/状态栏美化
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: 美化状态栏-实时更新
+      id: a8fb188d-9c86-470a-83e2-05e37ba500f5
+      启用: true
+      查找表达式: <StatusPlaceHolderImpl/>
+      文件: 正则/美化状态栏-实时更新
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: 仅格式思维链
+      id: f12fb223-50e8-4994-a043-8eba95763bdf
+      启用: true
+      查找表达式: /<Analysis>[\s\S]+?<\/Analysis>/gm
+      内容: ""
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: false
+        仅格式提示词: true
+
+    - 正则名称: "[美化]完整变量完成-眠眠"
+      id: c67b7bb2-7169-403b-92f9-b8a26265e9d3
+      启用: true
+      查找表达式: /<UpdateVariable(?:variable)?>\s*(.*)\s*<\/UpdateVariable(?:variable)?>/gsi
+      文件: 正则/[美化]完整变量完成-眠眠
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: "[美化]变量更新中-眠眠"
+      id: bdd2e882-e79f-4575-afb4-112d49ebb4dc
+      启用: true
+      查找表达式: /<UpdateVariable(?:variable)?>(?!.*<\/UpdateVariable(?:variable)?>)\s*(.*)\s*$/gsi
+      文件: 正则/[美化]变量更新中-眠眠
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: 美化-变量更新完成-实时
+      id: d5297c98-783a-4467-9a9e-951544c061c4
+      启用: false
+      查找表达式: /<UpdateVariable(?:variable)?>\s*(.*)\s*<\/UpdateVariable(?:variable)?>/gsi
+      文件: 正则/美化-变量更新完成-实时
+      来源:
+        用户输入: false
+        AI输出: true
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+  酒馆助手:
+    脚本库:
+      - 名称: Zod变量结构
+        id: 3485c6f0-fa83-48b3-b817-cdce0d4e16e6
+        启用: false
+        类型: 脚本
+        内容: |
+          import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
+
+          export const Schema = z.object({
+            环境: z.object({
+              日期: z.string(),
+              时间: z.string(),
+              '📍': z.string(),
+            }),
+
+            夏夏: z.object({
+              基础属性: z.object({
+                姓名: z.string(),
+                体力: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+                饥饿感: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+                特殊阶段: z.string(),
+              }),
+
+              情绪: z.object({
+                心情: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+                欲望: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+              }),
+
+              动态状态: z.object({
+                正在: z.string(),
+                次数: z.coerce.number(),
+                '👗': z.string(),
+                Debuff: z.record(z.string().describe('状态名'), z.string().describe('状态描述')).prefault({}),
+              }),
+
+              物品栏: z
+                .record(
+                  z.string().describe('物品名'),
+                  z.object({
+                    描述: z.string(),
+                    数量: z.coerce.number(),
+                  }),
+                )
+                .prefault({}),
+
+              小记系统: z.object({
+                小记: z.string(),
+                历史小记: z.record(z.string(), z.string()).prefault({}),
+              }),
+            }),
+          });
+
+          $(() => {
+            registerMvuSchema(Schema);
+          })
+
+      - 名称: MVUbeta
+        id: f181b075-0553-4803-9a76-b2a22d096b4d
+        启用: true
+        类型: 脚本
+        内容: import
+          'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate@beta/artifact/bundle.js'
+        按钮:
+          启用: true
+          按钮列表:
+            - 名称: 重新处理变量
+              可见: true
+            - 名称: 重新读取初始变量
+              可见: true
+            - 名称: 清除旧楼层变量
+              可见: false
+            - 名称: 快照楼层
+              可见: false
+            - 名称: 重演楼层
+              可见: false
+            - 名称: 重试额外模型解析
+              可见: false
+
+      - 名称: MVU夏夏-实时更新
+        id: 9e5ead23-8184-4927-900f-af199532a321
+        启用: true
+        类型: 脚本
+        内容: import
+          'http://127.0.0.1:5500/dist/%E5%A4%8F%E5%A4%8F/%E8%84%9A%E6%9C%AC/%E5%8F%98%E9%87%8F%E7%BB%93%E6%9E%84/index.js'
+
+    变量: {}
