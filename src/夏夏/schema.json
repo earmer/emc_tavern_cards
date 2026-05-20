@@ -7,12 +7,15 @@
       "type": "object",
       "properties": {
         "日期": {
+          "default": "",
           "type": "string"
         },
         "时间": {
+          "default": "",
           "type": "string"
         },
         "📍": {
+          "default": "",
           "type": "string"
         }
       }
@@ -26,6 +29,7 @@
           "type": "object",
           "properties": {
             "姓名": {
+              "default": "",
               "type": "string"
             },
             "体力": {
@@ -33,9 +37,11 @@
               "type": "number"
             },
             "饥饿感": {
+              "default": 0,
               "type": "number"
             },
             "特殊阶段": {
+              "default": "",
               "type": "string"
             }
           }
@@ -49,6 +55,7 @@
               "type": "number"
             },
             "欲望": {
+              "default": 0,
               "type": "number"
             }
           }
@@ -58,12 +65,15 @@
           "type": "object",
           "properties": {
             "正在": {
+              "default": "",
               "type": "string"
             },
             "次数": {
+              "default": 0,
               "type": "number"
             },
             "👗": {
+              "default": "",
               "type": "string"
             },
             "Debuff": {
@@ -108,6 +118,7 @@
           "type": "object",
           "properties": {
             "小记": {
+              "default": "",
               "type": "string"
             },
             "历史小记": {
